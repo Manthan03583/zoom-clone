@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 'use client';
 
 import { useState } from 'react';
@@ -11,8 +10,8 @@ import { useUser } from '@clerk/nextjs';
 import Loader from './Loader';
 import { Textarea } from './ui/textarea';
 import ReactDatePicker from 'react-datepicker';
-import { toast } from '@/hooks/use-toast';
 import { Input } from './ui/input';
+import { useToast } from '@/hooks/use-toast';
 
 const initialValues = {
   dateTime: new Date(),
@@ -29,6 +28,7 @@ const MeetingTypeList = () => {
   const [callDetail, setCallDetail] = useState<Call>();
   const client = useStreamVideoClient();
   const { user } = useUser();
+  const { toast } = useToast();
 
   const createMeeting = async () => {
     if (!client || !user) return;
